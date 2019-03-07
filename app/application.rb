@@ -21,13 +21,7 @@ class Application
       resp.status = 404
     end
  
-    if req.path.match(/items/)
- 
-      item_name = req.path.split("/items/").last #turn 
-      item = @@items.find{|s| s.name == item_name}
- 
-      resp.write song.price
-    end
+    
  
     resp.finish
   end
