@@ -20,17 +20,16 @@ end
 
 class Application
  
-  @@songs = [Song.new("Sorry", "Justin Bieber"),
-            Song.new("Hello","Adele")]
+  @@items = []
  
   def call(env)
     resp = Rack::Response.new
     req = Rack::Request.new(env)
  
-    if req.path.match(/songs/)
+    if req.path.match(/items/)
  
-      song_title = req.path.split("/songs/").last #turn /songs/Sorry into Sorry
-      song = @@songs.find{|s| s.title == song_title}
+      item_name = req.path.split("/items/").last #turn /songs/Sorry into Sorry
+      item = @@items.find{|s| s.name == song_title}
  
       resp.write song.artist
     end
